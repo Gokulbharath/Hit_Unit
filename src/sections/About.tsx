@@ -7,13 +7,24 @@ import { stats } from '../data/site';
 function Stat({ stat, index }: { stat: (typeof stats)[number]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
-  const value = useCountUp(stat.value, 1800, inView);
+  const value = stat.type === 'text' ? null : useCountUp(stat.value as number, 1800, inView);
 
   return (
     <div ref={ref} className="text-center sm:text-left">
       <div className="font-heading text-4xl font-bold tracking-tight text-ink sm:text-5xl">
-        {value}
-        <span className="text-copper">{stat.suffix}</span>
+        {stat.type === 'text' ? (
+          // Static text display for non-numeric values
+          <div className="flex flex-col gap-2">
+            <span className="text-copper">{stat.value}</span>
+            {stat.suffix && <span className="text-sm text-muted font-normal">{stat.suffix}</span>}
+          </div>
+        ) : (
+          // Animated counter for numeric values
+          <>
+            {value}
+            <span className="text-copper">{stat.suffix}</span>
+          </>
+        )}
       </div>
       <p className="mt-2 text-sm font-medium text-muted">{stat.label}</p>
     </div>
@@ -22,7 +33,7 @@ function Stat({ stat, index }: { stat: (typeof stats)[number]; index: number }) 
 
 export function About() {
   return (
-    <section id="about" className="relative scroll-mt-20 py-20 sm:py-28">
+    <section id="about" className="relative scroll-mt-20 py-10 sm:py-14">
       <div className="container-px">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal direction="right">

@@ -45,7 +45,7 @@ export function Navbar() {
             scrolled ? 'glass border-b border-line/70 shadow-soft' : 'border-b border-transparent'
           }`}
         >
-          <nav className="container-px flex h-14 items-center justify-between sm:h-16">
+          <nav className="container-px flex h-12 items-center justify-between sm:h-14">
             <Logo />
 
             <div className="hidden items-center gap-0.5 lg:flex">
@@ -53,7 +53,8 @@ export function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => handleNav(item.id)}
-                  className="group relative rounded-full px-3 py-1.5 text-[13px] font-medium text-muted transition-colors duration-200 hover:text-ink"
+                  aria-label={`Navigate to ${item.label}`}
+                  className="group relative rounded-full px-3 py-1.5 text-[13px] font-medium text-muted transition-colors duration-200 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                 >
                   <span className={active === item.id ? 'text-ink' : ''}>{item.label}</span>
                   {active === item.id && (

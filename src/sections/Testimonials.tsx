@@ -19,7 +19,7 @@ export function Testimonials() {
   const active = testimonials[index];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-20 sm:py-20">
       <div className="container-px">
         <Reveal>
           <p className="eyebrow">Testimonials</p>

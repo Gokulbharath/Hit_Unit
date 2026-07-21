@@ -68,7 +68,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="contact" className="scroll-mt-20 py-20 sm:py-20">
       <div className="container-px">
         <Reveal>
           <p className="eyebrow">Contact</p>
@@ -108,7 +108,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="btn-primary group"
+                  className="btn-primary group disabled:opacity-70"
                 >
                   {status === 'loading' ? (
                     <>
@@ -116,23 +116,32 @@ export function Contact() {
                     </>
                   ) : (
                     <>
-                      Send Message
+                      Send Enquiry
                       <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </>
                   )}
                 </button>
 
                 {status === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="inline-flex flex-col gap-0.5"
+                  >
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-green-600">
+                      <CheckCircle2 className="h-4 w-4" /> Message Sent Successfully
+                    </span>
+                    <span className="text-xs text-green-600/80">We'll get back to you within 24 hours.</span>
+                  </motion.div>
+                )}
+                {status === 'error' && (
                   <motion.span
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-green-600"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-red-500"
                   >
-                    <CheckCircle2 className="h-4 w-4" /> Thank you! Your enquiry has been sent successfully. We'll contact you shortly.
+                    ✕ {error}
                   </motion.span>
-                )}
-                {status === 'error' && (
-                  <span className="text-sm font-medium text-red-500">{error}</span>
                 )}
               </div>
             </form>

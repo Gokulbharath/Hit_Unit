@@ -5,7 +5,7 @@ import { pricing } from '../data/site';
 
 export function Pricing() {
   return (
-    <section id="pricing" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="pricing" className="scroll-mt-20 py-20 sm:py-20">
       <div className="container-px">
         <Reveal>
           <p className="eyebrow">Pricing</p>

@@ -3,7 +3,7 @@ import { whyCards } from '../data/site';
 
 export function WhyHitUnit() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-20 sm:py-20">
       <div className="container-px">
         <Reveal>
           <p className="eyebrow">Why HIT UNIT</p>

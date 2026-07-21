@@ -1,4 +1,4 @@
-import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { navItems, services } from '../data/site';
@@ -6,10 +6,11 @@ import { navItems, services } from '../data/site';
 export function Footer() {
   const year = new Date().getFullYear();
   const socials = [
-    { icon: Linkedin, label: 'LinkedIn', href: '#' },
-    { icon: Instagram, label: 'Instagram', href: '#' },
-    { icon: Github, label: 'GitHub', href: '#' },
-    { icon: Mail, label: 'Email', href: 'mailto:support@hitunit.in' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' },
+    { icon: Instagram, label: 'Instagram', href: 'https://instagram.com' },
+    { icon: Mail, label: 'Email', href: 'mailto:gokulbharath1221@gmail.com' },
+    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919000000000' },
   ];
 
   return (
@@ -29,8 +30,10 @@ export function Footer() {
                   <a
                     key={s.label}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-line bg-canvas text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-copper hover:text-copper"
+                    className="grid h-10 w-10 place-items-center rounded-full border border-line bg-canvas text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-copper hover:text-copper hover:bg-copper/10"
                   >
                     <Icon className="h-4 w-4" />
                   </a>

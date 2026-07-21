@@ -31,7 +31,7 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
 export function Technologies() {
   const half = Math.ceil(techStack.length / 2);
   return (
-    <section id="technologies" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="technologies" className="scroll-mt-20 py-20 sm:py-20">
       <div className="container-px">
         <Reveal>
           <p className="eyebrow">Technologies</p>

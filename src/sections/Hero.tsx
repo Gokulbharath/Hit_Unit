@@ -19,7 +19,7 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-44 lg:pb-28">
+    <section id="home" className="relative overflow-hidden pt-16 pb-12 sm:pt-20 lg:pt-24 lg:pb-16">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 grid-bg mask-fade-b opacity-70" />
@@ -90,21 +90,21 @@ export function Hero() {
                 <CheckCircle2 className="h-3.5 w-3.5 text-copper" />
               </span>
               <span className="text-sm font-semibold text-ink">3</span>
-              <span className="text-xs text-muted">Completed Projects</span>
+              <span className="text-xs text-muted">Successful Projects</span>
             </div>
             <div className="flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-2 backdrop-blur">
               <span className="grid h-6 w-6 place-items-center rounded-full bg-gold/15">
                 <Star className="h-3.5 w-3.5 text-gold-600" />
               </span>
-              <span className="text-sm font-semibold text-ink">100%</span>
-              <span className="text-xs text-muted">Client Satisfaction</span>
+              <span className="text-sm font-semibold text-ink">15+</span>
+              <span className="text-xs text-muted">Technologies</span>
             </div>
             <div className="flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-2 backdrop-blur">
               <span className="grid h-6 w-6 place-items-center rounded-full bg-copper/10">
                 <MapPin className="h-3.5 w-3.5 text-copper" />
               </span>
-              <span className="text-sm font-semibold text-ink">Coimbatore</span>
-              <span className="text-xs text-muted">India</span>
+              <span className="text-sm font-semibold text-ink">Mon–Sat</span>
+              <span className="text-xs text-muted">Available</span>
             </div>
           </motion.div>
         </div>

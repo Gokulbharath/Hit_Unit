@@ -1,6 +1,8 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal, Stagger, StaggerItem } from '../components/Reveal';
 import { portfolio } from '../data/site';
+import udhyamImage from '../assets/csbs.png';
+import brightmindsImage from '../assets/brb.jpeg';
 
 const gradients = [
   'from-copper/25 to-gold/10',
@@ -10,7 +12,7 @@ const gradients = [
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="portfolio" className="scroll-mt-20 py-20 sm:py-20">
       <div className="container-px">
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -25,24 +27,74 @@ export function Portfolio() {
         </Reveal>
 
         <Stagger className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" gap={0.08}>
-          {portfolio.map((p, i) => (
+          {portfolio.map((p, i) => {
+            // Determine which image to use
+            const projectImage = p.title === 'UDHYAM 2026' ? udhyamImage : p.title === 'BrightMinds Arena' ? brightmindsImage : null;
+            
+            return (
             <StaggerItem key={p.title} className="h-full">
               <div className="card card-hover group flex h-full flex-col overflow-hidden">
-                {/* Image placeholder */}
-                <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${gradients[i % gradients.length]}`}>
-                  <div className="absolute inset-0 grid-bg opacity-40" />
-                  <div className="absolute inset-0 grid place-items-center">
-                    <div className="text-center">
-                      <span className="font-heading text-2xl font-bold text-ink/20 transition-all duration-500 group-hover:text-copper/40 group-hover:scale-110 sm:text-3xl">
-                        {p.title.split(' ').map((w) => w[0]).join('')}
-                      </span>
-                      <p className="mt-1 text-[11px] font-medium uppercase tracking-wider text-ink/30">{p.category}</p>
-                    </div>
-                  </div>
-                  <div className="absolute left-3 top-3">
-                    <span className="rounded-full bg-surface/80 px-2.5 py-1 text-[10px] font-semibold text-ink backdrop-blur">
-                      {p.category}
+                {/* Image placeholder with floating overlay */}
+                <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${gradients[i % gradients.length]} rounded-t-lg`} aria-label={`${p.title} - ${p.category}`}>
+                  {projectImage ? (
+                    <>
+                      {/* Real project screenshot */}
+                      <img 
+                        src={projectImage} 
+                        alt={`${p.title} - ${p.category}`}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      {/* Dark gradient overlay at bottom for readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    </>
+                  ) : (
+                    <>
+                      {/* Placeholder for DEPART project */}
+                      <div className="absolute inset-0 grid-bg opacity-40" />
+                      <div className="absolute inset-0 grid place-items-center">
+                        <div className="text-center">
+                          <span className="font-heading text-2xl font-bold text-ink/20 transition-all duration-500 group-hover:text-copper/40 group-hover:scale-110 sm:text-3xl" aria-hidden="true">
+                            {p.title.split(' ').map((w) => w[0]).join('')}
+                          </span>
+                          <p className="mt-1 text-[11px] font-medium uppercase tracking-wider text-ink/30" aria-hidden="true">{p.category}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {/* Floating overlay with status and action button */}
+                  <div className="absolute inset-0 flex flex-col items-end justify-between p-3 sm:p-4">
+                    {/* Status badge - top right */}
+                    <span className={`rounded-full px-3 py-1.5 text-[11px] font-semibold backdrop-blur transition-all duration-300 ${
+                      p.status === 'Live' 
+                        ? 'bg-green-500/20 text-green-600' 
+                        : 'bg-yellow-500/20 text-yellow-600'
+                    }`}>
+                      {p.status}
                     </span>
+                    
+                    {/* Action button - bottom right */}
+                    <div className="flex flex-col items-end gap-2 transition-transform duration-300 group-hover:translate-y-0">
+                      {p.status === 'Coming Soon' ? (
+                        <button
+                          disabled
+                          className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500/20 px-3 py-1.5 text-[11px] font-semibold text-yellow-600 backdrop-blur cursor-not-allowed"
+                        >
+                          Coming Soon
+                        </button>
+                      ) : (
+                        <a
+                          href={p.link || '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/btn inline-flex items-center gap-1.5 rounded-full bg-copper/20 px-3 py-1.5 text-[11px] font-semibold text-copper backdrop-blur transition-all duration-300 hover:bg-copper/30 hover:-translate-y-0.5"
+                        >
+                          🌐 Visit Live Site
+                          <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -58,20 +110,11 @@ export function Portfolio() {
                       </span>
                     ))}
                   </div>
-
-                  <div className="mt-auto pt-6">
-                    <a
-                      href="#contact"
-                      className="group/btn inline-flex items-center gap-1.5 text-sm font-semibold text-copper transition-colors hover:text-copper-600"
-                    >
-                      View Details
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                    </a>
-                  </div>
                 </div>
               </div>
             </StaggerItem>
-          ))}
+            );
+          })}
         </Stagger>
       </div>
     </section>

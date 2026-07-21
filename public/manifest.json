@@ -1,0 +1,27 @@
+{
+  "name": "HIT UNIT - Building Ideas Into Software",
+  "short_name": "HIT UNIT",
+  "description": "We build scalable websites, AI-powered applications and business software that help companies grow faster.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#1a1a1a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "technology"],
+  "screenshots": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    }
+  ]
+}

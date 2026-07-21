@@ -76,10 +76,10 @@ export const whyCards: { title: string; desc: string; icon: LucideIcon }[] = [
 ];
 
 export const stats = [
-  { label: 'Projects Completed', value: 48, suffix: '+' },
-  { label: 'Technologies', value: 24, suffix: '+' },
-  { label: 'Support', value: 24, suffix: '/7' },
-  { label: 'Client Satisfaction', value: 98, suffix: '%' },
+  { label: 'Successful Projects', value: 3, suffix: '', type: 'number' },
+  { label: 'Technologies', value: 15, suffix: '+', type: 'number' },
+  { label: 'Business Domains', value: 3, suffix: '', type: 'number' },
+  { label: 'Support', value: 'Mon–Sat', suffix: '9:00 AM – 7:00 PM', type: 'text' },
 ];
 
 export const services = [
@@ -164,6 +164,8 @@ export const portfolio = [
     category: 'Full Stack Web Application',
     desc: 'A complete supermarket management platform with inventory management, billing, order tracking, customer management, analytics dashboard, authentication and admin panel.',
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+    status: 'Coming Soon',
+    link: null,
   },
   {
     title: 'UDHYAM 2026',
@@ -171,6 +173,8 @@ export const portfolio = [
     category: 'Event Management Website',
     desc: 'A responsive event website developed for a college cultural festival with event listings, registrations, schedules, gallery, coordinators, and contact information.',
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    status: 'Live',
+    link: 'https://udhyam-csbs.vercel.app/',
   },
   {
     title: 'BrightMinds Arena',
@@ -178,6 +182,8 @@ export const portfolio = [
     category: 'EdTech Platform',
     desc: 'An online assessment platform for educational institutions with student management, online tests, evaluations, performance analytics and result tracking.',
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    status: 'Live',
+    link: 'https://brightminds-arena-frontend-production.up.railway.app/',
   },
 ];
 

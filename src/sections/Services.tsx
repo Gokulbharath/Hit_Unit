@@ -4,7 +4,7 @@ import { services } from '../data/site';
 
 export function Services() {
   return (
-    <section id="services" className="relative scroll-mt-20 py-20 sm:py-28">
+    <section id="services" className="relative scroll-mt-20 py-20 sm:py-20">
       <div className="container-px">
         <Reveal>
           <p className="eyebrow">Services</p>
