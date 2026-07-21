@@ -159,52 +159,25 @@ export const techStack = [
 
 export const portfolio = [
   {
-    title: 'Restaurant Management',
-    category: 'Full Stack',
-    desc: 'POS, table reservations, kitchen orders and real-time analytics for a multi-branch restaurant group.',
-    tech: ['React', 'Node', 'MongoDB', 'Socket.io'],
+    title: 'DEPART',
+    subtitle: 'Smart Supermarket Management System',
+    category: 'Full Stack Web Application',
+    desc: 'A complete supermarket management platform with inventory management, billing, order tracking, customer management, analytics dashboard, authentication and admin panel.',
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
   },
   {
-    title: 'Inventory System',
-    category: 'Business App',
-    desc: 'Stock tracking, supplier management and low-stock alerts with barcode scanning.',
-    tech: ['React', 'Express', 'PostgreSQL'],
+    title: 'UDHYAM 2026',
+    subtitle: 'College Cultural Event Website',
+    category: 'Event Management Website',
+    desc: 'A responsive event website developed for a college cultural festival with event listings, registrations, schedules, gallery, coordinators, and contact information.',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
   },
   {
-    title: 'College ERP',
-    category: 'Enterprise',
-    desc: 'Student records, attendance, fees, exams and staff management in one platform.',
-    tech: ['Next.js', 'Node', 'PostgreSQL'],
-  },
-  {
-    title: 'Billing Software',
-    category: 'Business App',
-    desc: 'GST-compliant invoicing, payments and financial reporting for small businesses.',
-    tech: ['React', 'Node', 'MongoDB'],
-  },
-  {
-    title: 'AI Chatbot',
-    category: 'AI',
-    desc: 'A support assistant trained on company docs that resolves 70% of queries automatically.',
-    tech: ['OpenAI', 'Python', 'React'],
-  },
-  {
-    title: 'Business Website',
-    category: 'Web',
-    desc: 'A premium marketing site with CMS-driven content and lead capture forms.',
-    tech: ['Next.js', 'Tailwind', 'Supabase'],
-  },
-  {
-    title: 'Portfolio Platform',
-    category: 'Web',
-    desc: 'A customizable portfolio builder for creators with analytics and custom domains.',
-    tech: ['React', 'Node', 'MongoDB'],
-  },
-  {
-    title: 'Task Management',
-    category: 'Full Stack',
-    desc: 'Kanban boards, team workspaces and real-time collaboration with role-based access.',
-    tech: ['React', 'Express', 'PostgreSQL'],
+    title: 'BrightMinds Arena',
+    subtitle: 'Assessment Platform',
+    category: 'EdTech Platform',
+    desc: 'An online assessment platform for educational institutions with student management, online tests, evaluations, performance analytics and result tracking.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
   },
 ];
 
@@ -246,27 +219,21 @@ export const pricing = [
 export const testimonials = [
   {
     quote:
-      'HIT UNIT rebuilt our entire booking platform in six weeks. The code quality was the best our internal team has ever inherited.',
-    name: 'Arjun Mehta',
-    role: 'CTO, StayFinder',
+      'The supermarket management system simplified our daily operations and inventory management. The interface is clean and easy to use.',
+    name: 'Retail Business Owner',
+    role: 'DEPART — Supermarket Management',
   },
   {
     quote:
-      'They designed and shipped our AI support assistant in under a month. It now resolves 70% of customer queries automatically.',
-    name: 'Priya Nair',
-    role: 'Head of Product, FinEdge',
+      'The event website made registrations and event management smooth throughout our college cultural festival.',
+    name: 'College Event Coordinator',
+    role: 'UDHYAM 2026 — Cultural Event',
   },
   {
     quote:
-      'From architecture to deployment, the team was professional and responsive. Our ERP now serves 4,000+ students reliably.',
-    name: 'Dr. Senthil Kumar',
-    role: 'Principal, Vidya College',
-  },
-  {
-    quote:
-      'The dashboard they built gave us real-time visibility into inventory across 12 branches. ROI in the first quarter.',
-    name: 'Kavya Reddy',
-    role: 'Operations Lead, MetroRetail',
+      'The assessment platform helped us conduct online evaluations efficiently with a great user experience.',
+    name: 'Educational Organization',
+    role: 'BrightMinds Arena — EdTech',
   },
 ];
 

@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Logo } from './Logo';
 import { Magnetic } from './Magnetic';
-import { useTheme } from '../hooks/useTheme';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { navItems } from '../data/site';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { theme, toggle } = useTheme();
   const active = useActiveSection(navItems.map((n) => n.id));
 
   useEffect(() => {
@@ -37,9 +35,9 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: -24, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className="fixed inset-x-0 top-0 z-50"
       >
         <div
@@ -47,15 +45,15 @@ export function Navbar() {
             scrolled ? 'glass border-b border-line/70 shadow-soft' : 'border-b border-transparent'
           }`}
         >
-          <nav className="container-px flex h-16 items-center justify-between sm:h-18">
+          <nav className="container-px flex h-14 items-center justify-between sm:h-16">
             <Logo />
 
-            <div className="hidden items-center gap-1 lg:flex">
+            <div className="hidden items-center gap-0.5 lg:flex">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNav(item.id)}
-                  className="group relative rounded-full px-3.5 py-2 text-sm font-medium text-muted transition-colors duration-200 hover:text-ink"
+                  className="group relative rounded-full px-3 py-1.5 text-[13px] font-medium text-muted transition-colors duration-200 hover:text-ink"
                 >
                   <span className={active === item.id ? 'text-ink' : ''}>{item.label}</span>
                   {active === item.id && (
@@ -70,18 +68,10 @@ export function Navbar() {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={toggle}
-                aria-label="Toggle theme"
-                className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink transition-colors hover:border-copper hover:text-copper"
-              >
-                {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </button>
-
               <Magnetic className="hidden sm:block">
                 <button
                   onClick={() => handleNav('contact')}
-                  className="btn-primary hidden sm:inline-flex"
+                  className="btn-primary hidden px-5 py-2.5 text-[13px] sm:inline-flex"
                 >
                   Get Free Consultation
                 </button>
@@ -90,9 +80,9 @@ export function Navbar() {
               <button
                 onClick={() => setOpen(true)}
                 aria-label="Open menu"
-                className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface text-ink lg:hidden"
+                className="grid h-9 w-9 place-items-center rounded-full border border-line bg-surface text-ink lg:hidden"
               >
-                <Menu className="h-5 w-5" />
+                <Menu className="h-4 w-4" />
               </button>
             </div>
           </nav>
@@ -120,9 +110,9 @@ export function Navbar() {
                 <button
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
-                  className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-line bg-surface"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4" />
                 </button>
               </div>
 
@@ -134,7 +124,7 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.08 + i * 0.05 }}
                     onClick={() => handleNav(item.id)}
-                    className={`flex items-center justify-between rounded-2xl px-4 py-3.5 text-left text-base font-medium transition-colors ${
+                    className={`flex items-center justify-between rounded-2xl px-4 py-3 text-left text-base font-medium transition-colors ${
                       active === item.id ? 'bg-hover text-ink' : 'text-muted hover:bg-hover hover:text-ink'
                     }`}
                   >

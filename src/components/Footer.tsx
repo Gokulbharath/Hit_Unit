@@ -70,11 +70,11 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-ink/80">
               <li>Coimbatore, Tamil Nadu</li>
               <li>
-                <a href="mailto:support@hitunit.in" className="transition-colors hover:text-copper">
-                  support@hitunit.in
+                <a href="mailto:gokulbharath1221@gmail.com" className="transition-colors hover:text-copper">
+                  gokulbharath1221@gmail.com
                 </a>
               </li>
-              <li>Mon – Sat · 9 AM – 7 PM</li>
+              <li>Mon – Sat · 9:00 AM – 7:00 PM</li>
             </ul>
             <a href="#contact" className="btn-secondary mt-5 text-xs">
               Start a project
@@ -84,7 +84,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 sm:flex-row">
           <p className="text-xs text-muted">
-            © {year} HIT UNIT · Building Ideas Into Software
+            © 2026 HIT UNIT · Building Ideas Into Software
           </p>
           <p className="text-xs text-muted">
             Designed & built with care in India.

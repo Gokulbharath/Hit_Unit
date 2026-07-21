@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCircle2, MapPin, Sparkles, Star } from 'lucide-react';
 import { Magnetic } from '../components/Magnetic';
 import { heroCards } from '../data/site';
 
@@ -83,22 +83,29 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-10 flex items-center gap-6 text-sm text-muted"
+            className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3"
           >
-            <div className="flex -space-x-2">
-              {['A', 'P', 'S', 'K'].map((c, i) => (
-                <span
-                  key={i}
-                  className="grid h-8 w-8 place-items-center rounded-full border-2 border-canvas bg-hover font-heading text-xs font-bold text-ink"
-                  style={{ zIndex: 10 - i }}
-                >
-                  {c}
-                </span>
-              ))}
+            <div className="flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-2 backdrop-blur">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-copper/10">
+                <CheckCircle2 className="h-3.5 w-3.5 text-copper" />
+              </span>
+              <span className="text-sm font-semibold text-ink">3</span>
+              <span className="text-xs text-muted">Completed Projects</span>
             </div>
-            <span>
-              <span className="font-semibold text-ink">48+</span> projects delivered for teams worldwide
-            </span>
+            <div className="flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-2 backdrop-blur">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-gold/15">
+                <Star className="h-3.5 w-3.5 text-gold-600" />
+              </span>
+              <span className="text-sm font-semibold text-ink">100%</span>
+              <span className="text-xs text-muted">Client Satisfaction</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-2 backdrop-blur">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-copper/10">
+                <MapPin className="h-3.5 w-3.5 text-copper" />
+              </span>
+              <span className="text-sm font-semibold text-ink">Coimbatore</span>
+              <span className="text-xs text-muted">India</span>
+            </div>
           </motion.div>
         </div>
 

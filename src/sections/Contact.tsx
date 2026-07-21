@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageCircle, Send } from 'lucide-react';
 import { Reveal } from '../components/Reveal';
-import { supabase } from '../lib/supabase';
 
 const projectTypes = [
   'Web Development',
@@ -18,9 +17,9 @@ const projectTypes = [
 const budgets = ['< ₹5,000', '₹5,000 – ₹15,000', '₹15,000 – ₹50,000', '₹50,000+', 'Custom Quote'];
 
 const info = [
-  { icon: MapPin, label: 'Office', value: 'Coimbatore, Tamil Nadu, India' },
-  { icon: Mail, label: 'Email', value: 'support@hitunit.in', href: 'mailto:support@hitunit.in' },
-  { icon: Clock, label: 'Working Hours', value: 'Monday – Saturday · 9 AM – 7 PM' },
+  { icon: MapPin, label: 'Office', value: 'Coimbatore, Tamil Nadu' },
+  { icon: Mail, label: 'Email', value: 'gokulbharath1221@gmail.com', href: 'mailto:gokulbharath1221@gmail.com' },
+  { icon: Clock, label: 'Business Hours', value: 'Monday – Saturday · 9:00 AM – 7:00 PM' },
 ];
 
 export function Contact() {
@@ -43,12 +42,25 @@ export function Contact() {
       message: String(data.get('message') || ''),
     };
 
+    if (!payload.name || !payload.email || !payload.message) {
+      setStatus('error');
+      setError('Please fill in your name, email and message.');
+      return;
+    }
+
     try {
-      const { error: dbError } = await supabase.from('contact_submissions').insert([payload]);
-      if (dbError) throw dbError;
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.message || 'Failed to send enquiry. Please try again.');
+      }
       setStatus('success');
       form.reset();
-      setTimeout(() => setStatus('idle'), 4000);
+      setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
       setStatus('error');
@@ -73,7 +85,7 @@ export function Contact() {
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Name" name="name" required placeholder="Your full name" />
                 <Field label="Email" name="email" type="email" required placeholder="you@company.com" />
-                <Field label="Phone" name="phone" placeholder="+91 90000 00000" />
+                <Field label="Phone" name="phone" placeholder="Available on Request" />
                 <Field label="Company" name="company" placeholder="Company name" />
                 <SelectField label="Project Type" name="project_type" options={projectTypes} />
                 <SelectField label="Budget" name="budget" options={budgets} />
@@ -116,7 +128,7 @@ export function Contact() {
                     animate={{ opacity: 1, x: 0 }}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-green-600"
                   >
-                    <CheckCircle2 className="h-4 w-4" /> Message sent!
+                    <CheckCircle2 className="h-4 w-4" /> Thank you! Your enquiry has been sent successfully. We'll contact you shortly.
                   </motion.span>
                 )}
                 {status === 'error' && (
