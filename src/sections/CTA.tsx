@@ -12,11 +12,10 @@ export function CTA() {
             <div className="absolute left-1/2 top-0 h-64 w-[640px] -translate-x-1/2 rounded-full bg-copper/30 blur-[100px]" />
             <div className="relative">
               <h2 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl">
-                Ready to build your <span className="text-gradient-copper">next product?</span>
+                Let's Build Your Next <span className="text-gradient-copper">Software Solution</span>
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/70">
-                Book a free consultation. We will discuss your idea, scope and timeline — no
-                commitment required.
+                Every project is unique. Tell us about your requirements and we'll provide a tailored solution and quotation.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Magnetic>
@@ -26,8 +25,8 @@ export function CTA() {
                   </a>
                 </Magnetic>
                 <Magnetic>
-                  <a href="#portfolio" className="btn border border-white/20 bg-white/5 text-white hover:bg-white/10">
-                    View Our Work
+                  <a href="#contact" className="btn border border-white/20 bg-white/5 text-white hover:bg-white/10">
+                    Contact Us
                   </a>
                 </Magnetic>
               </div>

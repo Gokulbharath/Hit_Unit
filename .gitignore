@@ -21,3 +21,13 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Backend
+server/node_modules
+server/.env
+
+# Environment
+.env
+
+# Logs
+*.log

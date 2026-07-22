@@ -18,7 +18,7 @@ const budgets = ['< ₹5,000', '₹5,000 – ₹15,000', '₹15,000 – ₹50,00
 
 const info = [
   { icon: MapPin, label: 'Office', value: 'Coimbatore, Tamil Nadu' },
-  { icon: Mail, label: 'Email', value: 'gokulbharath1221@gmail.com', href: 'mailto:gokulbharath1221@gmail.com' },
+  { icon: Mail, label: 'Email', value: 'rohith16725gmail.com', href: 'mailto:rohith16725gmail.com' },
   { icon: Clock, label: 'Business Hours', value: 'Monday – Saturday · 9:00 AM – 7:00 PM' },
 ];
 
