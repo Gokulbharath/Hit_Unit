@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageCircle, Send } from 'lucide-react';
 import { Reveal } from '../components/Reveal';
 
+// API base URL from environment variable
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
 const projectTypes = [
   'Web Development',
   'Full Stack Application',
@@ -49,7 +52,7 @@ export function Contact() {
     }
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
