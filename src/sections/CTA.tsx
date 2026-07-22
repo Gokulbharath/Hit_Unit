@@ -15,12 +15,7 @@ export function CTA() {
                 Let's Build Your Next <span className="text-gradient-copper">Software Solution</span>
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/70">
-<<<<<<< HEAD
-                Book a free consultation. We will discuss your idea, scope and timeline , no
-                commitment required.
-=======
                 Every project is unique. Tell us about your requirements and we'll provide a tailored solution and quotation.
->>>>>>> 758f91c9564b85cb8b651d83c407ef0f5f850b3e
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Magnetic>

@@ -24,10 +24,6 @@ export const navItems = [
   { id: 'process', label: 'Process' },
   { id: 'technologies', label: 'Technologies' },
   { id: 'portfolio', label: 'Portfolio' },
-<<<<<<< HEAD
-  // { id: 'pricing', label: 'Pricing' },
-=======
->>>>>>> 758f91c9564b85cb8b651d83c407ef0f5f850b3e
   { id: 'faq', label: 'FAQ' },
   // { id: 'contact', label: 'Contact' },
 ];
@@ -251,17 +247,10 @@ export const faqs = [
     q: 'What kind of software does HIT UNIT build?',
     a: 'We build custom websites, full-stack web applications, AI solutions, machine learning systems, cloud deployments and APIs for startups, enterprises and educational institutions.',
   },
-<<<<<<< HEAD
-  // {
-  //   q: 'How much does a project cost?',
-  //   a: 'Starter websites begin at ₹2,500, business applications at ₹7,500 and AI solutions at ₹10,000. Final pricing depends on scope, complexity and timeline  we share a detailed quote after a free consultation.',
-  // },
-=======
   {
     q: 'How much does a project cost?',
     a: 'Project costs depend entirely on scope, complexity and timeline. Every project is unique. We provide a detailed, tailored quotation after understanding your requirements during a free consultation.',
   },
->>>>>>> 758f91c9564b85cb8b651d83c407ef0f5f850b3e
   {
     q: 'How long does a typical project take?',
     a: 'A marketing website takes 1–2 weeks, a full-stack application 4–6 weeks and AI solutions vary by complexity. We share a week-by-week roadmap during planning.',
