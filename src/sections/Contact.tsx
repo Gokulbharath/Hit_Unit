@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, Loader2, Mail, MapPin, MessageCircle, Send } from 'lucide-react';
 import { Reveal } from '../components/Reveal';
 
+// API base URL from environment variable with trailing slash removed
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3001').replace(/\/+$/, '');
+
 const projectTypes = [
   'Web Development',
   'Full Stack Application',
@@ -18,7 +21,7 @@ const budgets = ['< ₹5,000', '₹5,000 – ₹15,000', '₹15,000 – ₹50,00
 
 const info = [
   { icon: MapPin, label: 'Office', value: 'Coimbatore, Tamil Nadu' },
-  { icon: Mail, label: 'Email', value: 'gokulbharath1221@gmail.com', href: 'mailto:gokulbharath1221@gmail.com' },
+  { icon: Mail, label: 'Email', value: 'rohith16725gmail.com', href: 'mailto:rohith16725gmail.com' },
   { icon: Clock, label: 'Business Hours', value: 'Monday – Saturday · 9:00 AM – 7:00 PM' },
 ];
 
@@ -49,21 +52,60 @@ export function Contact() {
     }
 
     try {
-      const res = await fetch('/api/contact', {
+      const url = `${API_URL}/api/contact`;
+      
+      // Log request in development mode
+      if (import.meta.env.DEV) {
+        console.log(`[Contact Form] Sending request to: ${url}`);
+        console.log('[Contact Form] Payload:', payload);
+      }
+
+      const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.message || 'Failed to send enquiry. Please try again.');
+
+      // Log response in development mode
+      if (import.meta.env.DEV) {
+        console.log(`[Contact Form] Response status: ${res.status}`);
       }
+
+      if (!res.ok) {
+        let errorMessage = 'Failed to send enquiry. Please try again.';
+        try {
+          const body = await res.json();
+          if (body?.message) {
+            errorMessage = body.message;
+          } else if (body?.error) {
+            errorMessage = body.error;
+          }
+        } catch (parseErr) {
+          // Response body is not JSON, use generic message
+          if (import.meta.env.DEV) {
+            console.error('[Contact Form] Response parsing error:', parseErr);
+          }
+        }
+        throw new Error(errorMessage);
+      }
+
+      // Success - log in development mode
+      if (import.meta.env.DEV) {
+        console.log('[Contact Form] Message sent successfully');
+      }
+
       setStatus('success');
       form.reset();
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      setError(errorMessage);
       setStatus('error');
+
+      // Log error in development mode
+      if (import.meta.env.DEV) {
+        console.error('[Contact Form] Error:', err);
+      }
     }
   };
 

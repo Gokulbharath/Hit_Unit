@@ -9,11 +9,10 @@ import { Services } from './sections/Services';
 import { Process } from './sections/Process';
 import { Technologies } from './sections/Technologies';
 import { Portfolio } from './sections/Portfolio';
-import { Pricing } from './sections/Pricing';
 import { Testimonials } from './sections/Testimonials';
 import { FAQ } from './sections/FAQ';
-import { Contact } from './sections/Contact';
 import { CTA } from './sections/CTA';
+import { Contact } from './sections/Contact';
 import { NotFound } from './pages/NotFound';
 
 function Home() {
