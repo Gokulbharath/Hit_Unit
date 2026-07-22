@@ -7,7 +7,7 @@ export function WhyHitUnit() {
       <div className="container-px">
         <Reveal>
           <p className="eyebrow">Why HIT UNIT</p>
-          <h2 className="section-title mt-5">Why Businesses Choose HIT UNIT</h2>
+          <h2 className="section-title mt-5">Why HIT UNIT?</h2>
           <p className="section-sub">
             We combine engineering rigor with product thinking to deliver software that earns trust
             and scales with your business.
