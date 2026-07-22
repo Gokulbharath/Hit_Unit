@@ -105,8 +105,8 @@ export function Hero() {
               <span className="grid h-6 w-6 place-items-center rounded-full bg-copper/10">
                 <CheckCircle2 className="h-3.5 w-3.5 text-copper" />
               </span>
-              <span className="text-sm font-semibold text-ink">3</span>
-              <span className="text-xs text-muted">Successful Projects</span>
+              <span className="text-sm font-semibold text-ink">100%</span>
+              <span className="text-xs text-muted">Client Commitment</span>
             </div>
             <div className="flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-2 backdrop-blur">
               <span className="grid h-6 w-6 place-items-center rounded-full bg-gold/15">

@@ -72,14 +72,14 @@ export const whyCards: { title: string; desc: string; icon: LucideIcon }[] = [
     icon: Code2,
   },
   {
-    title: 'Long-Term Support',
+    title: 'Support',
     desc: 'Ongoing maintenance, monitoring and feature evolution after launch.',
     icon: Sparkles,
   },
 ];
 
 export const stats = [
-  { label: 'Successful Projects', value: 3, suffix: '', type: 'number' },
+  // { label: 'Successful Projects', value: 3, suffix: '', type: 'number' },
   { label: 'Technologies', value: 15, suffix: '+', type: 'number' },
   { label: 'Business Domains', value: 3, suffix: '', type: 'number' },
   { label: 'Support', value: 'Mon–Sat', suffix: '9:00 AM – 7:00 PM', type: 'text' },
@@ -254,7 +254,7 @@ export const faqs = [
 <<<<<<< HEAD
   // {
   //   q: 'How much does a project cost?',
-  //   a: 'Starter websites begin at ₹2,500, business applications at ₹7,500 and AI solutions at ₹10,000. Final pricing depends on scope, complexity and timeline , we share a detailed quote after a free consultation.',
+  //   a: 'Starter websites begin at ₹2,500, business applications at ₹7,500 and AI solutions at ₹10,000. Final pricing depends on scope, complexity and timeline  we share a detailed quote after a free consultation.',
   // },
 =======
   {

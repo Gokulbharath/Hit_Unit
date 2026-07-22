@@ -10,7 +10,7 @@ export function Services() {
           <p className="eyebrow">Services</p>
           <h2 className="section-title mt-5">Everything you need to ship software</h2>
           <p className="section-sub">
-            From a single landing page to a full AI platform, we cover the entire product lifecycle —
+            From a single landing page to a full AI platform, we cover the entire product lifecycle 
             design, development, deployment and support.
           </p>
         </Reveal>

@@ -18,7 +18,7 @@ export function FAQ() {
               Everything you need to know before starting a project with us. Still curious? Reach
               out and we will get back within a day.
             </p>
-            <a href="#contact" className="link-copper mt-6 inline-flex text-sm font-semibold">
+            <a href="https://linktr.ee/rohith16725" target="_blank" rel="noopener noreferrer" className="link-copper mt-6 inline-flex text-sm font-semibold">
               Talk to us →
             </a>
           </Reveal>
