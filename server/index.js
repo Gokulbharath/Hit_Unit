@@ -1,5 +1,5 @@
 import express from "express";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -7,6 +7,11 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+// =========================
+// Resend Email Client
+// =========================
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // =========================
 // CORS
@@ -37,27 +42,16 @@ app.use(
 app.use(express.json());
 
 // =========================
-// Nodemailer
+// Health Check Routes
 // =========================
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
-// =========================
-// Health Check
-// =========================
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.json({
     success: true,
     message: "HIT UNIT Backend Running 🚀",
   });
 });
 
-app.get("/api/health", (req, res) => {
+app.get("/api/health", (_req, res) => {
   res.json({
     success: true,
     status: "healthy",
@@ -79,6 +73,7 @@ app.post("/api/contact", async (req, res) => {
       message,
     } = req.body;
 
+    // Validation
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
@@ -86,45 +81,104 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide a valid email address.",
+      });
+    }
+
+    // HTML Email Template
     const html = `
-      <h2>New Enquiry - HIT UNIT</h2>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #333;">New Enquiry - HIT UNIT</h2>
 
-      <table cellpadding="8" cellspacing="0" border="1">
-        <tr><td><b>Name</b></td><td>${name}</td></tr>
-        <tr><td><b>Email</b></td><td>${email}</td></tr>
-        <tr><td><b>Phone</b></td><td>${phone || "-"}</td></tr>
-        <tr><td><b>Company</b></td><td>${company || "-"}</td></tr>
-        <tr><td><b>Project Type</b></td><td>${project_type || "-"}</td></tr>
-        <tr><td><b>Budget</b></td><td>${budget || "-"}</td></tr>
-      </table>
+        <table cellpadding="8" cellspacing="0" border="1" style="border-collapse: collapse; width: 100%;">
+          <tr>
+            <td style="background-color: #f5f5f5; font-weight: bold;"><b>Name</b></td>
+            <td>${name}</td>
+          </tr>
+          <tr>
+            <td style="background-color: #f5f5f5; font-weight: bold;"><b>Email</b></td>
+            <td>${email}</td>
+          </tr>
+          <tr>
+            <td style="background-color: #f5f5f5; font-weight: bold;"><b>Phone</b></td>
+            <td>${phone || "-"}</td>
+          </tr>
+          <tr>
+            <td style="background-color: #f5f5f5; font-weight: bold;"><b>Company</b></td>
+            <td>${company || "-"}</td>
+          </tr>
+          <tr>
+            <td style="background-color: #f5f5f5; font-weight: bold;"><b>Project Type</b></td>
+            <td>${project_type || "-"}</td>
+          </tr>
+          <tr>
+            <td style="background-color: #f5f5f5; font-weight: bold;"><b>Budget</b></td>
+            <td>${budget || "-"}</td>
+          </tr>
+        </table>
 
-      <br>
+        <br>
 
-      <h3>Message</h3>
+        <h3 style="color: #333;">Message</h3>
+        <p>${message}</p>
 
-      <p>${message}</p>
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+        <p style="color: #999; font-size: 12px;">This is an automated response. Please do not reply to this email.</p>
+      </div>
     `;
 
-    await transporter.sendMail({
-      from: `"HIT UNIT Website" <${process.env.EMAIL_USER}>`,
+    // Send email using Resend
+    const { data, error } = await resend.emails.send({
+      from: "HIT UNIT <onboarding@resend.dev>",
       to: process.env.TO_EMAIL || "gokulbharath1221@gmail.com",
       replyTo: email,
       subject: `New Enquiry from ${name}`,
       html,
     });
 
+    // Handle Resend errors
+    if (error) {
+      console.error("[Resend Error]", error);
+      return res.status(500).json({
+        success: false,
+        message: "Failed to send enquiry. Please try again later.",
+      });
+    }
+
+    console.log("[Email Sent]", {
+      messageId: data?.id,
+      to: process.env.TO_EMAIL,
+      from: email,
+      subject: `New Enquiry from ${name}`,
+    });
+
     res.status(200).json({
       success: true,
-      message: "Enquiry sent successfully.",
+      message: "Enquiry sent successfully. We'll get back to you within 24 hours.",
     });
   } catch (error) {
-    console.error(error);
+    console.error("[Contact API Error]", error);
 
     res.status(500).json({
       success: false,
-      message: "Failed to send enquiry.",
+      message: error.message || "Failed to send enquiry.",
     });
   }
+});
+
+// =========================
+// 404 Handler
+// =========================
+app.use((_req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found",
+  });
 });
 
 // =========================
@@ -132,4 +186,5 @@ app.post("/api/contact", async (req, res) => {
 // =========================
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`📧 Email service: Resend`);
 });
