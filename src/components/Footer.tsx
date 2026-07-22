@@ -6,17 +6,17 @@ import { navItems, services } from '../data/site';
 export function Footer() {
   const year = new Date().getFullYear();
   const socials = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/rohith-repo' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/rohith16725/' },
     { icon: Instagram, label: 'Instagram', href: 'https://instagram.com' },
-    { icon: Mail, label: 'Email', href: 'mailto:gokulbharath1221@gmail.com' },
-    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/919000000000' },
+    { icon: Mail, label: 'Email', href: 'mailto:rohith16725@gmail.com' },
+    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/917358713381' },
   ];
 
   return (
     <footer className="relative border-t border-line bg-surface">
       <div className="container-px py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.8fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
@@ -68,7 +68,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="font-heading text-xs font-semibold uppercase tracking-wider text-muted">Get in touch</h4>
             <ul className="mt-4 space-y-2.5 text-sm text-ink/80">
               <li>Coimbatore, Tamil Nadu</li>
@@ -82,7 +82,8 @@ export function Footer() {
             <a href="#contact" className="btn-secondary mt-5 text-xs">
               Start a project
             </a>
-          </div>
+          </div> */}
+          
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 sm:flex-row">
@@ -90,7 +91,7 @@ export function Footer() {
             © 2026 HIT UNIT · Building Ideas Into Software
           </p>
           <p className="text-xs text-muted">
-            Designed & built with care in India.
+            Coimbatore, India.
           </p>
         </div>
       </div>

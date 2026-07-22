@@ -70,12 +70,14 @@ export function Navbar() {
 
             <div className="flex items-center gap-2">
               <Magnetic className="hidden sm:block">
-                <button
-                  onClick={() => handleNav('contact')}
+                <a
+                  href="https://linktr.ee/rohith16725"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary hidden px-5 py-2.5 text-[13px] sm:inline-flex"
                 >
-                  Get Free Consultation
-                </button>
+                  Contact Us
+                </a>
               </Magnetic>
 
               <button
@@ -136,9 +138,14 @@ export function Navbar() {
               </div>
 
               <div className="mt-auto">
-                <Link to="/contact" onClick={() => setOpen(false)} className="btn-primary w-full">
-                  Get Free Consultation
-                </Link>
+                <a
+                  href="https://linktr.ee/rohith16725"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary hidden px-5 py-2.5 text-[13px] sm:inline-flex"
+                >
+                  Contact This
+                </a>
               </div>
             </motion.div>
           </motion.div>

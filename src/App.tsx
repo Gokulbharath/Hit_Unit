@@ -26,11 +26,9 @@ function Home() {
       <Process />
       <Technologies />
       <Portfolio />
-      <Pricing />
       <Testimonials />
       <FAQ />
       <CTA />
-      <Contact />
     </>
   );
 }

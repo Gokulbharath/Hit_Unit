@@ -37,7 +37,7 @@ export function Technologies() {
           <p className="eyebrow">Technologies</p>
           <h2 className="section-title mt-5">A modern, proven stack</h2>
           <p className="section-sub">
-            We choose technologies that are mature, well-supported and loved by engineers — so your
+            We choose technologies that are mature, well-supported and loved by engineers, so your
             product stays fast and your team stays productive.
           </p>
         </Reveal>

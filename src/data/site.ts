@@ -24,9 +24,9 @@ export const navItems = [
   { id: 'process', label: 'Process' },
   { id: 'technologies', label: 'Technologies' },
   { id: 'portfolio', label: 'Portfolio' },
-  { id: 'pricing', label: 'Pricing' },
+  // { id: 'pricing', label: 'Pricing' },
   { id: 'faq', label: 'FAQ' },
-  { id: 'contact', label: 'Contact' },
+  // { id: 'contact', label: 'Contact' },
 ];
 
 export const heroCards = [
@@ -164,7 +164,7 @@ export const portfolio = [
     category: 'Full Stack Web Application',
     desc: 'A complete supermarket management platform with inventory management, billing, order tracking, customer management, analytics dashboard, authentication and admin panel.',
     tech: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
-    status: 'Coming Soon',
+    status: 'On Progress',
     link: null,
   },
   {
@@ -248,10 +248,10 @@ export const faqs = [
     q: 'What kind of software does HIT UNIT build?',
     a: 'We build custom websites, full-stack web applications, AI solutions, machine learning systems, cloud deployments and APIs for startups, enterprises and educational institutions.',
   },
-  {
-    q: 'How much does a project cost?',
-    a: 'Starter websites begin at ₹2,500, business applications at ₹7,500 and AI solutions at ₹10,000. Final pricing depends on scope, complexity and timeline — we share a detailed quote after a free consultation.',
-  },
+  // {
+  //   q: 'How much does a project cost?',
+  //   a: 'Starter websites begin at ₹2,500, business applications at ₹7,500 and AI solutions at ₹10,000. Final pricing depends on scope, complexity and timeline , we share a detailed quote after a free consultation.',
+  // },
   {
     q: 'How long does a typical project take?',
     a: 'A marketing website takes 1–2 weeks, a full-stack application 4–6 weeks and AI solutions vary by complexity. We share a week-by-week roadmap during planning.',
@@ -270,6 +270,6 @@ export const faqs = [
   },
   {
     q: 'Which technologies do you use?',
-    a: 'React, Next.js, Node, Express, MongoDB, PostgreSQL, Python, TensorFlow, OpenAI, Docker, AWS and more — chosen to fit your scale and team.',
+    a: 'React, Next.js, Node, Express, MongoDB, PostgreSQL, Python, TensorFlow, OpenAI, Docker, AWS and more, chosen to fit your scale and team.',
   },
 ];

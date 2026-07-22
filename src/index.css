@@ -3,26 +3,28 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --canvas: #fafafa;
-    --surface: #ffffff;
-    --ink: #111111;
+    :root {
+    --canvas: #0B0F19;
+    --surface: #121826;
+    --ink: #F8FAFC;
     --muted: #6b7280;
-    --line: #e5e5e5;
-    --hover: #f3f3f3;
-    --primary: #1a1a1a;
-    --copper: #c67c4e;
-    --gold: #e8b86d;
+    --line: #e5e7eb;
+    --hover: #f3f4f6;
+    --primary: #111827;
+
+    /* New Purple Theme */
+    --copper: #8b5cf6;
+    --gold: #c4b5fd;
   }
 
-  .dark {
-    --canvas: #0a0a0a;
-    --surface: #141414;
-    --ink: #f5f5f5;
-    --muted: #9ca3af;
-    --line: #262626;
-    --hover: #1c1c1c;
-    --primary: #f5f5f5;
+    .dark {
+    --canvas: #09090b;
+    --surface: #111113;
+    --ink: #fafafa;
+    --muted: #a1a1aa;
+    --line: #27272a;
+    --hover: #18181b;
+    --primary: #ffffff;
   }
 
   * {
@@ -48,7 +50,7 @@
   }
 
   ::selection {
-    background: rgba(198, 124, 78, 0.22);
+    background: rgba(139, 92, 246, 0.25);
     color: var(--ink);
   }
 
@@ -66,7 +68,7 @@
     background-clip: padding-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(198, 124, 78, 0.5);
+    background: rgba(139, 92, 246, 0.45);
     background-clip: padding-box;
   }
 }
@@ -142,10 +144,16 @@
   }
 
   .text-gradient-copper {
-    background: linear-gradient(120deg, #C67C4E 0%, #E8B86D 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+      background: linear-gradient(
+          120deg,
+          #8b5cf6 0%,
+          #a78bfa 40%,
+          #c4b5fd 100%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
   }
 
   .glass {
@@ -158,7 +166,9 @@
   }
 
   .ring-soft {
-    box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.04), 0 1px 2px rgba(17, 17, 17, 0.04);
+    box-shadow:
+0 8px 28px rgba(139,92,246,.22),
+0 0 60px rgba(167,139,250,.12);
   }
 
   /* Enhanced Shadows */
@@ -167,7 +177,7 @@
   }
 
   .shadow-glow {
-    box-shadow: 0 8px 24px rgba(198, 124, 78, 0.12), 0 4px 12px rgba(17, 17, 17, 0.08);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.12), 0 4px 12px rgba(17, 17, 17, 0.08);
   }
 
   .shadow-card {

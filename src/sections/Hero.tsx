@@ -19,7 +19,7 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative overflow-hidden pt-16 pb-12 sm:pt-20 lg:pt-24 lg:pb-16">
+    <section id="home" className="relative min-h-screen flex items-center pt-20">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 grid-bg mask-fade-b opacity-70" />
@@ -35,7 +35,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="eyebrow"
-          >
+          > 
             <Sparkles className="h-3.5 w-3.5 text-copper" />
             Building Ideas Into Software
           </motion.div>
@@ -66,10 +66,13 @@ export function Hero() {
             className="mt-8 flex flex-wrap items-center gap-3"
           >
             <Magnetic>
-              <button onClick={() => scrollTo('contact')} className="btn-primary group">
-                Get Free Consultation
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </button>
+              <button
+            onClick={() => window.open("https://linktr.ee/rohith16725", "_blank")}
+            className="btn-primary hidden px-5 py-2.5 text-[13px] sm:inline-flex"
+          >
+            Contact Us
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </button>
             </Magnetic>
             <Magnetic>
               <button onClick={() => scrollTo('services')} className="btn-secondary group">

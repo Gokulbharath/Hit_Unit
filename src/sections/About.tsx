@@ -35,7 +35,7 @@ export function About() {
   return (
     <section id="about" className="relative scroll-mt-20 py-10 sm:py-14">
       <div className="container-px">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-12">
           <Reveal direction="right">
             <p className="eyebrow">About</p>
             <h2 className="section-title mt-5">
@@ -73,7 +73,7 @@ export function About() {
             </div>
           </Reveal>
 
-          <Reveal direction="left" className="flex flex-col justify-center">
+          {/* <Reveal direction="left" className="flex flex-col justify-center">
             <div className="grid grid-cols-2 gap-8 rounded-3xl border border-line bg-surface p-8 shadow-soft sm:p-10">
               {stats.map((s, i) => (
                 <Stat key={s.label} stat={s} index={i} />
@@ -88,7 +88,7 @@ export function About() {
             >
               Trusted by founders, product teams and institutions across India.
             </motion.p>
-          </Reveal>
+          </Reveal> */}
         </div>
       </div>
     </section>

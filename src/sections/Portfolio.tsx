@@ -76,12 +76,13 @@ export function Portfolio() {
                     
                     {/* Action button - bottom right */}
                     <div className="flex flex-col items-end gap-2 transition-transform duration-300 group-hover:translate-y-0">
-                      {p.status === 'Coming Soon' ? (
+                      {p.status === 'On Progress' ? (
                         <button
                           disabled
                           className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500/20 px-3 py-1.5 text-[11px] font-semibold text-yellow-600 backdrop-blur cursor-not-allowed"
                         >
-                          Coming Soon
+                          On Progress
+                          <ArrowUpRight className="h-3 w-3 transition-transform duration-300" />
                         </button>
                       ) : (
                         <a
