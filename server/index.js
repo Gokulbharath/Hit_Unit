@@ -14,31 +14,39 @@ const PORT = process.env.PORT || 8080;
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // =========================
-// CORS
+// CORS Configuration
 // =========================
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
   "https://hit-unit.vercel.app",
-  "https://hit-unit-4zywplyrr-gokul-bharaths-projects.vercel.app",
 ];
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      // Allow Postman / curl / same-origin requests
-      if (!origin) return callback(null, true);
+// Add wildcard for Vercel preview deployments
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or Postman)
+    if (!origin) return callback(null, true);
 
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
+    // Check if origin is in allowed list
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
 
-      return callback(new Error("CORS Not Allowed"));
-    },
-    credentials: true,
-  })
-);
+    // Allow all *.vercel.app domains for preview deployments
+    if (origin.includes("vercel.app")) {
+      return callback(null, true);
+    }
 
+    // Deny all other origins
+    return callback(new Error("CORS not allowed"));
+  },
+  credentials: true,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // =========================
@@ -90,6 +98,15 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
+    // Check if Resend API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error("[Config Error] RESEND_API_KEY not set");
+      return res.status(500).json({
+        success: false,
+        message: "Email service is not configured. Please try again later.",
+      });
+    }
+
     // HTML Email Template
     const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -125,10 +142,10 @@ app.post("/api/contact", async (req, res) => {
         <br>
 
         <h3 style="color: #333;">Message</h3>
-        <p>${message}</p>
+        <p style="line-height: 1.6;">${message.replace(/\n/g, "<br>")}</p>
 
         <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
-        <p style="color: #999; font-size: 12px;">This is an automated response. Please do not reply to this email.</p>
+        <p style="color: #999; font-size: 12px;">This is an automated response from HIT UNIT. Please do not reply to this email.</p>
       </div>
     `;
 
@@ -150,11 +167,13 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
-    console.log("[Email Sent]", {
+    console.log("[Email Sent Successfully]", {
       messageId: data?.id,
       to: process.env.TO_EMAIL,
       from: email,
+      name: name,
       subject: `New Enquiry from ${name}`,
+      timestamp: new Date().toISOString(),
     });
 
     res.status(200).json({
@@ -162,11 +181,15 @@ app.post("/api/contact", async (req, res) => {
       message: "Enquiry sent successfully. We'll get back to you within 24 hours.",
     });
   } catch (error) {
-    console.error("[Contact API Error]", error);
+    console.error("[Contact API Error]", {
+      error: error.message,
+      stack: error.stack,
+      timestamp: new Date().toISOString(),
+    });
 
     res.status(500).json({
       success: false,
-      message: error.message || "Failed to send enquiry.",
+      message: "Failed to send enquiry. Please try again later.",
     });
   }
 });
@@ -182,9 +205,26 @@ app.use((_req, res) => {
 });
 
 // =========================
+// Global Error Handler
+// =========================
+app.use((err, _req, res, _next) => {
+  console.error("[Global Error Handler]", {
+    error: err.message,
+    stack: err.stack,
+    timestamp: new Date().toISOString(),
+  });
+
+  res.status(500).json({
+    success: false,
+    message: "Internal server error. Please try again later.",
+  });
+});
+
+// =========================
 // Start Server
 // =========================
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📧 Email service: Resend`);
+  console.log(`🌐 CORS enabled for verified origins`);
 });
