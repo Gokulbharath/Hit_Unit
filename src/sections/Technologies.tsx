@@ -3,9 +3,9 @@ import { techStack } from '../data/site';
 
 function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
   return (
-    <div className="mask-fade-x flex overflow-hidden">
+   <div className="mask-fade-x relative w-full overflow-hidden">
       <div
-        className="flex shrink-0 gap-3 pr-3"
+        className="flex w-max shrink-0 gap-3 pr-3"
         style={{
           animation: `marquee-${reverse ? 'r' : 'f'} 28s linear infinite`,
         }}
@@ -27,23 +27,29 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
     </div>
   );
 }
-
 export function Technologies() {
   const half = Math.ceil(techStack.length / 2);
+
   return (
-    <section id="technologies" className="scroll-mt-20 py-20 sm:py-20">
+    <section id="technologies" className="scroll-mt-20 py-20">
       <div className="container-px">
-        <Reveal>
-          <p className="eyebrow">Technologies</p>
-          <h2 className="section-title mt-5">A modern, proven stack</h2>
-          <p className="section-sub">
-            We choose technologies that are mature, well-supported and loved by engineers, so your
-            product stays fast and your team stays productive.
-          </p>
-        </Reveal>
+        {/* Heading... */}
       </div>
 
-      <div className="mt-12 space-y-3">
+      {/* Mobile */}
+      <div className="mt-10 flex flex-wrap justify-center gap-3 px-5 sm:hidden">
+        {techStack.map((tech) => (
+          <span
+            key={tech}
+            className="rounded-full border border-line bg-surface px-4 py-2 text-sm"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      {/* Tablet/Desktop */}
+      <div className="mt-12 hidden space-y-3 sm:block">
         <Marquee items={techStack.slice(0, half)} />
         <Marquee items={techStack.slice(half)} reverse />
       </div>

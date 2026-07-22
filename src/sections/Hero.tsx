@@ -19,11 +19,24 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20">
+    <section id="home" className="relative overflow-hidden min-h-screen flex items-center pt-20">
       {/* Background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 grid-bg mask-fade-b opacity-70" />
-        <div className="absolute left-1/2 top-0 -z-10 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-copper/10 blur-[120px]" />
+        <div
+          className="
+            hidden
+            md:block
+            absolute left-1/2 top-0
+            -z-10
+            h-[520px]
+            w-[820px]
+            -translate-x-1/2
+            rounded-full
+            bg-copper/10
+            blur-[120px]
+          "
+        />
         <div className="absolute right-0 top-40 -z-10 h-[380px] w-[380px] rounded-full bg-gold/10 blur-[100px]" />
       </div>
 
@@ -117,7 +130,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-lg"
+          className="relative mx-auto hidden w-full max-w-lg lg:block"
         >
           {/* Dashboard frame */}
           <div className="relative rounded-3xl border border-line bg-surface p-5 shadow-float">
